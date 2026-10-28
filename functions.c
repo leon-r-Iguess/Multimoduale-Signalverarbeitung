@@ -7,22 +7,21 @@ const int VALUE_ERROR = 1;
 const int OUT_OF_BOUNDS = 2;
 
 //Interpolationsfunktion
-double interpolate(double x, double x1, double x2, double y1, double y2){
+double interpolate_linear(double dX, double dX1, double dX2, double dY1, double dY2){
 
-    if (x1 >= x2) {
-        fprintf(stderr, "VALUE_ERROR: x1 (%f) muss kleiner als x2 (%f) sein\n", x1, x2);
+    if (dX1 >= dX2) {
+        fprintf(stderr, "VALUE_ERROR: x1 (%f) muss kleiner als x2 (%f) sein\n", dX1, dX2);
         exit(VALUE_ERROR);
     }
 
-    if (x < x1 || x > x2) {
-        fprintf(stderr, "OUT_OF_BOUNDS: x = %f liegt nicht in [%f, %f]\n", x, x1, x2);
+    if (dX <= dX1 || dX >= dX2) {
+        fprintf(stderr, "OUT_OF_BOUNDS: x = %f liegt nicht in [%f, %f]\n", dX, dX1, dX2);
         exit(OUT_OF_BOUNDS);
     }
 
-    double gradient = (y2 - y1) / (x2 - x1);
-    double get_b = -(gradient * x1) + y1;
+    double gradient = (dY2 - dY1) / (dX2 - dX1);
+    double get_b = -(gradient * dX1) + dY1;
 
-    return gradient * x + get_b;
+    return gradient * dX + get_b;
 }
 
-double rescaling(){};
