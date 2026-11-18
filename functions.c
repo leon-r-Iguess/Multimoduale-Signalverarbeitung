@@ -25,3 +25,34 @@ double interpolate_linear(double dX, double dX1, double dX2, double dY1, double 
     return gradient * dX + get_b;
 }
 
+void scale_input(double *pdIn,int iLength; double dFactor, double dLowerLimit){
+
+	for(int i = 0; i<iLength; i++){
+		pdIn[i]=(pdIn[i]*dFactor)-dLowerLimit;
+	};
+
+}
+
+void signal_rescale(MMSignal *pmmsIn, double dFactor, double dLowerLimit){
+        scale_input(pmmsResult->pdValue, pmmsResult->iNumValues, dFactor,dLowerLimit);
+
+};
+
+MMSignal *signal_copy_rescale(const MMSignal *pmmsIn, double dFactor, double dLowerLimit){
+	
+};
+
+
+double *create_sine_array(int iNumSamples, int iNumSamplesPerPeriod){
+
+	double* sinArr = (double*) malloc(iNumSamples * sizeof(double));
+	for( int i = 0; i < iNumSamples-1; i++){
+		double sinDegree = 2.0 * dPi * i / iNumSamplesPerPeriod;
+		
+		double sinArr[i] = sin(sinDegree);
+	}
+
+	return sinArr;
+
+};
+
